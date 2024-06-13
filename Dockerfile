@@ -1,5 +1,5 @@
 # Use uma imagem base oficial do Python
-FROM python:3.9
+FROM python:3.11
 
 # Defina o diretório de trabalho
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exponha a porta que a aplicação irá rodarW
-EXPOSE 8000
+EXPOSE 2133
 
 # Comando para iniciar a aplicação
-CMD ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "2133"]

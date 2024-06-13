@@ -4,7 +4,7 @@ from src.models.health_check import HealthCheck
 
 router = APIRouter()
 
-@router.get("health",
+@router.get("/health",
             response_model=HealthCheck)
 def health_check():
-    return {"stauts": "OK"}
+    return {"status": "OK"}
