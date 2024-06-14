@@ -17,18 +17,18 @@ async def create_container_and_folders():
 async def make_post_requests():
     try:
         async with httpx.AsyncClient() as client:
-            response1 = await client.post("http://127.0.0.1:2323/first-endpoint")
+            response1 = await client.post("http://fastapi_src_app:8312/first-endpoint")
             logging.info(f"First POST response: {response1.json()}")
-            response2 = await client.post("http://127.0.0.1:2323/second-endpoint")
+            response2 = await client.post("http://fastapi_src_app:8312/second-endpoint")
             logging.info(f"Second POST response: {response2.json()}")
             if response1.status_code == 200 and response2.status_code == 200:
-                response3 = await client.post("http://127.0.0.1:2323/third-endpoint")
+                response3 = await client.post("http://fastapi_src_app:8312/third-endpoint")
                 logging.info(f"Third POST response: {response3.json()}")
     except Exception as e:
         logging.error(f"Error during POST requests: {e}")
 
 async def scheduled_task():
-    await create_container_and_folders()
+    #await create_container_and_folders()
     await make_post_requests()
 
 def scheduled_task_wrapper():
@@ -36,5 +36,5 @@ def scheduled_task_wrapper():
 
 def schedule_daily_task():
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(scheduled_task_wrapper, 'interval', seconds=30)
+    scheduler.add_job(scheduled_task_wrapper, 'interval', seconds=5)
     scheduler.start()

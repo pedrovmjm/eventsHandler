@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from src.logger import LOGGER
 from src.middleware.requests import log_requests
 
-from src.router import health_check
+from src.router import health_check, connect
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -20,4 +20,5 @@ app.add_middleware(
 app.middleware("http")(log_requests)
 
 app.include_router(health_check.router, tags=["health"])
+app.include_router(connect.router)
 
