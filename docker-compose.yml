@@ -1,10 +1,26 @@
-version: '3.11'
+version: '3.8'
 
 services:
-  fastapi-app:
-    build: 
+  app:
+    build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: src/Dockerfile
+    container_name: fastapi_src_app
     ports:
-      - "2133:2133"
-    env_file: .env
+      - "8312:8312"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  event_handler:
+    build:
+      context: .
+      dockerfile: event_handler/Dockerfile
+    container_name: fastapi_event_handler_app
+    ports:
+      - "8313:8313"
+    volumes:
+      - ./event_handler:/app/event_handler
+    environment:
+      - PYTHONUNBUFFERED=1

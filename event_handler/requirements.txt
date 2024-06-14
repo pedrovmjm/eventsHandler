@@ -1,0 +1,9 @@
+pydantic
+fastapi
+starlette
+uvicorn
+pymongo
+python-dotenv
+httpx 
+azure-storage-blob
+apscheduler

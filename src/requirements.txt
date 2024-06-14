@@ -1,0 +1,7 @@
+pydantic
+fastapi
+starlette
+uvicorn
+pymongo
+python-dotenv
+httpx 
