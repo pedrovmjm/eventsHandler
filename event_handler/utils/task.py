@@ -9,8 +9,8 @@ from event_handler.configs.secrets import STORAGGEACCOUNT, API_HOST, API_PORT
 azure_storage = AzureBlobStorage(STORAGGEACCOUNT)
 
 async def create_container_and_folders():
-    current_time = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    container_name = f"container-{current_time}"
+    current_time = datetime.now().strftime("%Y-%m-%d")
+    container_name = f"{current_time}"
     azure_storage.create_container_with_folders(container_name)
 
 async def make_post_requests():

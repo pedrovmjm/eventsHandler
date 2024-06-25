@@ -4,4 +4,6 @@ starlette
 uvicorn
 pymongo
 python-dotenv
-httpx 
+httpx
+aiofiles
+azure-storage-blob
